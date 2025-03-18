@@ -1,47 +1,138 @@
- body{
-  background-color: rgb(80, 74, 74);
-  font-family: Arial;
-  color:white;
-  transform: translate(-50%, -50%);
-  position: absolute;
-  top: 40%;
-  left: 50%;
-}
-.todo-grid ,.todo-input-grid{
-  display: grid;
-  grid-template-columns: 200px 150px 100px;
-  column-gap: 10px;
-  row-gap: 10px;
+  
+body {
+  background: linear-gradient(135deg, #2c3e50, #4ca1af);
+  font-family: "Poppins", sans-serif;
+  color: white;
+  display: flex;
+  justify-content: center;
   align-items: center;
+  height: 100vh;
+  margin: 0;
+  flex-direction: column;
+  
+}
 
+
+.container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 500px;
+  text-align: center;
 }
-.todo-input-grid{
-  margin-bottom: 10px;
-  align-items: stretch;
+
+
+.para {
+  font-size: 50px;
+  font-weight: bold;
+  color: #f5f5f5;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.3);
 }
-.name-input,.date-input{
-  font-size:15px;
-  padding:6px;
+
+ 
+.todo-input-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
-.add-todo-button{
-  background-color: green;
+
+ 
+.name-input, .date-input {
+  font-size: 15px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  transition: 0.3s ease;
+  width: 40%;
+}
+
+.name-input::placeholder, .date-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.name-input:focus, .date-input:focus {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+ 
+.add-todo-button {
+  background: #27ae60;
   color: white;
   border: none;
   font-size: 15px;
+  padding: 12px 20px;
+  border-radius: 8px;
   cursor: pointer;
+  transition: 0.3s ease-in-out;
 }
-.delete-todo-button{
-background-color: darkred;
-color:white;
-border:none;
-font-size: 15px;
-cursor: pointer;
-padding-top:10px;
-padding-bottom:10px;
+
+.add-todo-button:hover {
+  background: #2ecc71;
+  transform: scale(1.05);
 }
-.para{
-  font-size: 30px;
-   font-weight: bold;
-  color :rgb(237, 237, 237);
-  padding-left: 150px;
+ 
+.todo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  column-gap: 15px;
+  row-gap: 10px;
+  align-items: center;
+  text-align: left;
+}
+
+ 
+.todo-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s ease;
+}
+
+.todo-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+ 
+.delete-todo-button {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  font-size: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.delete-todo-button:hover {
+  background: #ff6b6b;
+  transform: scale(1.05);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  .todo-input-grid {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .name-input, .date-input {
+    width: 100%;
+  }
+
+  .container {
+    width: 90%;
+  }
 }

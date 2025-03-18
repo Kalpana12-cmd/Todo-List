@@ -1,38 +1,50 @@
 let arr =[{
-    name:'movie',
-    dueDate :'12-04-2025'
+    name:'',
+    dueDate :''
 },
     {
-        name:'wash dinner',
-        dueDate:'12-06-2025'
+        name:'',
+        dueDate:''
     }];
 fun1();
 function fun1(){
 let htmlElement = '';
-for(let i=0;i <arr.length ;i++ ){
-    const todoObject = arr[i];
-    const {name} = todoObject;
-    const {dueDate} = todoObject;
+arr.forEach((todoObject,index)=>{ 
+//for(let i=0;i <arr.length ;i++ ){
+  //  let todoObject = arr[index];
+    const {name,dueDate} = todoObject;
     const html = ` 
    <div> ${name} </div>
    <div> ${dueDate} </div>
-    <button class="delete-todo-button" onclick="
-    arr.splice(${i},1);
-    fun1();
-    ">Delete</button> 
+    <button class="delete-todo-button js-delete-button">Delete</button> 
       `;
       
     htmlElement += html;
-    const div = document.querySelector('.container')
-    .innerHTML = htmlElement;
+     
+});
+
+document.querySelector('.container')
+.innerHTML = htmlElement;
+
+document.querySelectorAll('.js-delete-button').forEach((deleteButton,index) => {
+    deleteButton.addEventListener('click',()=>{
+        arr.splice(index,1);
+        fun1();
+    });
+});
 }
- 
-}
+    document.querySelector('.js-add-button').addEventListener('click',()=>{
+        content();  
+    });
  function content(){
      const bar = document.querySelector('.js-bar');     
     const name = bar.value;
     const dateInputElement = document.querySelector('.calender');
     const dueDate = dateInputElement.value;
+    if( name ===  "" || dueDate === ""){
+        alert("Please enter a valid task and date.")
+        return;
+    }
     arr.push({
         name,
         dueDate
@@ -41,3 +53,4 @@ for(let i=0;i <arr.length ;i++ ){
     bar.value = '';
     fun1();
   }
+   
